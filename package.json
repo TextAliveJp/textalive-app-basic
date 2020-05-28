@@ -14,7 +14,9 @@
     "type": "git",
     "url": "git+https://github.com/TextAliveJp/textalive-app-basic.git"
   },
-  "keywords": ["textalive"],
+  "keywords": [
+    "textalive"
+  ],
   "author": "",
   "license": "MIT",
   "bugs": {
