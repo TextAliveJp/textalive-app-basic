@@ -1,0 +1,31 @@
+{
+  "name": "textalive-app-basic",
+  "private": true,
+  "version": "1.0.0",
+  "description": "TextAlive App Framework のシンプルな利用例",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html --out-dir docs --public-url /textalive-app-basic",
+    "clean": "del-cli docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TextAliveJp/textalive-app-basic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TextAliveJp/textalive-app-basic/issues"
+  },
+  "homepage": "https://github.com/TextAliveJp/textalive-app-basic#readme",
+  "devDependencies": {
+    "del-cli": "^3.0.1",
+    "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "textalive-api": "^0.13.4"
+  }
+}
