@@ -6,9 +6,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel src/index.html",
+    "dev": "parcel src/index.html --out-dir tmp",
     "build": "parcel build src/index.html --out-dir docs --public-url /textalive-app-basic",
-    "clean": "del-cli docs"
+    "clean": "del-cli tmp docs"
   },
   "repository": {
     "type": "git",
