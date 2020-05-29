@@ -1,3 +1,8 @@
+// TextAlive App Framework basic example
+// https://github.com/TextAliveJp/textalive-app-basic
+
+// see also: https://github.com/TextAliveJp/textalive-app-phrase
+
 import { Player } from "textalive-api";
 
 const player = new Player({
@@ -6,7 +11,7 @@ const player = new Player({
     appName: "Basic example"
   },
   mediaElement: document.querySelector("#media"),
-  fontFamilies: []
+  fontFamilies: [] // suppress loading fonts
 });
 
 player.addListener({
@@ -24,22 +29,30 @@ const artistSpan = document.querySelector("#artist span");
 const songSpan = document.querySelector("#song span");
 
 function onAppReady(app) {
+
+  // show control when the app is launched standalone
   if (!app.managed) {
     document.querySelector("#control").style.display = "block";
     playBtn.addEventListener("click", () => player.video && player.requestPlay());
     pauseBtn.addEventListener("click", () => player.video && player.requestPause());
     rewindBtn.addEventListener("click", () => player.video && player.requestMediaSeek(0));
   }
+
+  // load a song when a song URL is not specified
   if (!app.songUrl) {
       player.createFromSongUrl("http://www.youtube.com/watch?v=KdNHFKTKX2s");
   }
 }
 
 function onVideoReady(v) {
+  // show meta data
   artistSpan.textContent = player.data.song.artist.name;
   songSpan.textContent = player.data.song.name;
 }
 
 function onThrottledTimeUpdate(position) {
+  // update current position
   positionEl.textContent = String(Math.floor(position));
+
+  // the same information can be retrieved by `player.position` at any time
 }
