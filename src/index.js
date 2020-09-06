@@ -3,7 +3,7 @@
 
 // see also: https://github.com/TextAliveJp/textalive-app-phrase
 
-import { Player } from "textalive-api";
+import { Player } from "textalive-app-api";
 
 const player = new Player({
   app: {
