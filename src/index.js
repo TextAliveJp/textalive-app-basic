@@ -1,4 +1,4 @@
-// TextAlive App Framework basic example
+// TextAlive App API basic example
 // https://github.com/TextAliveJp/textalive-app-basic
 
 // see also: https://github.com/TextAliveJp/textalive-app-phrase
@@ -10,8 +10,7 @@ const player = new Player({
     appAuthor: "Jun Kato",
     appName: "Basic example"
   },
-  mediaElement: document.querySelector("#media"),
-  fontFamilies: [] // suppress loading fonts
+  mediaElement: document.querySelector("#media")
 });
 
 player.addListener({
@@ -54,5 +53,5 @@ function onThrottledTimeUpdate(position) {
   // update current position
   positionEl.textContent = String(Math.floor(position));
 
-  // the same information can be retrieved by `player.position` at any time
+  // more precise timing information can be retrieved by `player.timer.position` at any time
 }
