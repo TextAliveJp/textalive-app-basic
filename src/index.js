@@ -40,6 +40,7 @@ player.addListener({
 });
 
 const playBtns = document.querySelectorAll(".play");
+const jumpBtn = document.querySelector("#jump");
 const pauseBtn = document.querySelector("#pause");
 const rewindBtn = document.querySelector("#rewind");
 const positionEl = document.querySelector("#position strong");
@@ -57,16 +58,28 @@ function onAppReady(app) {
   // Show control if this app is launched standalone (not connected to a TextAlive host)
   if (!app.managed) {
     document.querySelector("#control").style.display = "block";
+
+    // 再生ボタン / Start music playback
     playBtns.forEach((playBtn) =>
       playBtn.addEventListener("click", () => {
         document.querySelector("#overlay").style.display = "none";
         player.video && player.requestPlay();
       })
     );
+
+    // 歌詞頭出しボタン / Seek to the first character in lyrics text
+    jumpBtn.addEventListener(
+      "click",
+      () => player.video && player.requestMediaSeek(player.video.firstChar.startTime)
+    );
+
+    // 一時停止ボタン / Pause music playback
     pauseBtn.addEventListener(
       "click",
       () => player.video && player.requestPause()
     );
+
+    // 巻き戻しボタン / Rewind music playback
     rewindBtn.addEventListener(
       "click",
       () => player.video && player.requestMediaSeek(0)
