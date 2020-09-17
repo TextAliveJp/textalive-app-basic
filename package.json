@@ -7,8 +7,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "parcel src/index.html --out-dir tmp",
-    "build": "parcel build src/index.html --out-dir docs --public-url /textalive-app-basic",
-    "clean": "del-cli tmp docs"
+    "build": "parcel build src/index.html --public-url ./ --out-dir docs --no-source-maps",
+    "clean": "del-cli .cache tmp docs"
   },
   "repository": {
     "type": "git",
@@ -25,9 +25,10 @@
   "homepage": "https://github.com/TextAliveJp/textalive-app-basic#readme",
   "devDependencies": {
     "del-cli": "^3.0.1",
-    "parcel-bundler": "^1.12.4"
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-clean-dist": "0.0.6"
   },
   "dependencies": {
-    "textalive-app-api": "^0.1.0"
+    "textalive-app-api": "^0.1.1"
   }
 }
