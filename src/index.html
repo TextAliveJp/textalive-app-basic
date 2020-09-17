@@ -4,7 +4,17 @@
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <div id="container"><p>TextAlive ホストの有無により再生コントロールの表示状態が切り替わるサンプルです。</p></div>
+    <div id="container">
+      <div>
+        <p id="lyrics">
+          <span id="char">-</span>
+        </p>
+        <ul>
+          <li>発声中の歌詞テキストがあれば上に表示されます</li>
+          <li>TextAlive ホストの有無により再生コントロールの表示状態が切り替わります</li>
+        </ul>
+      </div>
+    </div>
     <div id="media"></div>
     <div id="meta">
       <div id="artist">
