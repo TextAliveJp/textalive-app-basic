@@ -14,7 +14,7 @@ import { Player } from "textalive-app-api";
 // Show words being vocalized in #text
 const animateWord = function (now, unit) {
   if (unit.contains(now)) {
-    document.querySelector("#char").textContent = unit.text;
+    document.querySelector("#text").textContent = unit.text;
   }
 };
 
@@ -35,6 +35,7 @@ player.addListener({
   onVideoReady,
   onTimerReady,
   onThrottledTimeUpdate,
+  onPlay,
   onPause,
   onStop,
 });
@@ -62,7 +63,6 @@ function onAppReady(app) {
     // 再生ボタン / Start music playback
     playBtns.forEach((playBtn) =>
       playBtn.addEventListener("click", () => {
-        document.querySelector("#overlay").style.display = "none";
         player.video && player.requestPlay();
       })
     );
@@ -84,6 +84,10 @@ function onAppReady(app) {
       "click",
       () => player.video && player.requestMediaSeek(0)
     );
+
+    document.querySelector("#header a").setAttribute("href", "https://developer.textalive.jp/app/run/?ta_app_url=https%3A%2F%2Ftextalivejp.github.io%2Ftextalive-app-basic%2F&ta_song_url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DygY2qObZv24");
+  } else {
+    document.querySelector("#header a").setAttribute("href", "https://textalivejp.github.io/textalive-app-basic/");
   }
 
   // 楽曲URLが指定されていなければ マジカルミライ 2020テーマ曲を読み込む
@@ -142,11 +146,17 @@ function onThrottledTimeUpdate(position) {
   // More precise timing information can be retrieved by `player.timer.position` at any time
 }
 
+// 再生が始まったら #overlay を非表示に
+// Hide #overlay when music playback started
+function onPlay() {
+  document.querySelector("#overlay").style.display = "none";
+}
+
 // 再生が一時停止・停止したら歌詞表示をリセット
 // Reset lyrics text field when music playback is paused or stopped
 function onPause() {
-  document.querySelector("#char").textContent = "-";
+  document.querySelector("#text").textContent = "-";
 }
 function onStop() {
-  document.querySelector("#char").textContent = "-";
+  document.querySelector("#text").textContent = "-";
 }
