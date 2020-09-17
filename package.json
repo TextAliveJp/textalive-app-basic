@@ -28,6 +28,6 @@
     "parcel-bundler": "^1.12.4"
   },
   "dependencies": {
-    "textalive-app-api": "0.0.4"
+    "textalive-app-api": "^0.1.0"
   }
 }
