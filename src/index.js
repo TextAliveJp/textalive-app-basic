@@ -130,6 +130,10 @@ function onTimerReady(t) {
       .querySelectorAll("button")
       .forEach((btn) => (btn.disabled = false));
   }
+
+  // 歌詞がなければ歌詞頭出しボタンを無効にする
+  // Disable jump button if no lyrics is available
+  jumpBtn.disabled = !player.video.firstChar;
 }
 
 /**
