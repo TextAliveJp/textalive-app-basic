@@ -4,6 +4,8 @@ API チュートリアル「1. 開発の始め方」のサンプルコードで�
 発声中の歌詞を単語単位で表示します。
 また、このアプリが TextAlive ホストと接続されていなければ再生コントロールを表示します。
 
+TextAlive ホストと接続された状態をテストするには [TextAlive App Debugger](https://developer.textalive.jp/app/run/?ta_app_url=https%3A%2F%2Ftextalivejp.github.io%2Ftextalive-app-basic%2F&ta_song_url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DygY2qObZv24) のページにアクセスしてください。
+
 - API チュートリアル「1. 開発の始め方」: https://developer.textalive.jp/app/
 - サンプルコードのデモページ: https://textalivejp.github.io/textalive-app-basic/
 
