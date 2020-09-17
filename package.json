@@ -2,7 +2,7 @@
   "name": "textalive-app-basic",
   "private": true,
   "version": "1.0.0",
-  "description": "TextAlive App Framework のシンプルな利用例",
+  "description": "発声中のテキストを表示したりTextAlive ホストの有無により再生コントロールの表示状態を切り替えたりするTextAlive App APIの作例",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
