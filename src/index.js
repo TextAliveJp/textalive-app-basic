@@ -1,7 +1,7 @@
 /**
  * TextAlive App API basic example
  * https://github.com/TextAliveJp/textalive-app-basic
- * 
+ *
  * API チュートリアル「1. 開発の始め方」のサンプルコードです。
  * 発声中の歌詞を単語単位で表示します。
  * また、このアプリが TextAlive ホストと接続されていなければ再生コントロールを表示します。
@@ -23,7 +23,7 @@ const animateWord = function (now, unit) {
 const player = new Player({
   app: {
     appAuthor: "Jun Kato",
-    appName: "Basic example"
+    appName: "Basic example",
   },
   mediaElement: document.querySelector("#media"),
 });
@@ -33,12 +33,13 @@ const player = new Player({
 player.addListener({
   onAppReady,
   onVideoReady,
+  onTimerReady,
   onThrottledTimeUpdate,
   onPause,
   onStop,
 });
 
-const playBtn = document.querySelector("#play");
+const playBtns = document.querySelectorAll(".play");
 const pauseBtn = document.querySelector("#pause");
 const rewindBtn = document.querySelector("#rewind");
 const positionEl = document.querySelector("#position strong");
@@ -48,18 +49,28 @@ const songSpan = document.querySelector("#song span");
 
 /**
  * TextAlive App が初期化されたときに呼ばれる
- * 
+ *
  * @param {IPlayerApp} app - https://developer.textalive.jp/packages/textalive-app-api/interfaces/iplayerapp.html
  */
 function onAppReady(app) {
-
   // TextAlive ホストと接続されていなければ再生コントロールを表示する
   // Show control if this app is launched standalone (not connected to a TextAlive host)
   if (!app.managed) {
     document.querySelector("#control").style.display = "block";
-    playBtn.addEventListener("click", () => player.video && player.requestPlay());
-    pauseBtn.addEventListener("click", () => player.video && player.requestPause());
-    rewindBtn.addEventListener("click", () => player.video && player.requestMediaSeek(0));
+    playBtns.forEach((playBtn) =>
+      playBtn.addEventListener("click", () => {
+        document.querySelector("#overlay").style.display = "none";
+        player.video && player.requestPlay();
+      })
+    );
+    pauseBtn.addEventListener(
+      "click",
+      () => player.video && player.requestPause()
+    );
+    rewindBtn.addEventListener(
+      "click",
+      () => player.video && player.requestMediaSeek(0)
+    );
   }
 
   // 楽曲URLが指定されていなければ マジカルミライ 2020テーマ曲を読み込む
@@ -71,7 +82,7 @@ function onAppReady(app) {
 
 /**
  * 動画オブジェクトの準備が整ったとき（楽曲に関する情報を読み込み終わったとき）に呼ばれる
- * 
+ *
  * @param {IVideo} v - https://developer.textalive.jp/packages/textalive-app-api/interfaces/ivideo.html
  */
 function onVideoReady(v) {
@@ -90,8 +101,23 @@ function onVideoReady(v) {
 }
 
 /**
+ * 音源の再生準備が完了した時に呼ばれる
+ *
+ * @param {Timer} t - https://developer.textalive.jp/packages/textalive-app-api/interfaces/timer.html
+ */
+function onTimerReady(t) {
+  // ボタンを有効化する
+  // Enable buttons
+  if (!player.app.managed) {
+    document
+      .querySelectorAll("button")
+      .forEach((btn) => (btn.disabled = false));
+  }
+}
+
+/**
  * 動画の再生位置が変更されたときに呼ばれる（あまりに頻繁な発火を防ぐため一定間隔に間引かれる）
- * 
+ *
  * @param {number} position - https://developer.textalive.jp/packages/textalive-app-api/interfaces/playereventlistener.html#onthrottledtimeupdate
  */
 function onThrottledTimeUpdate(position) {

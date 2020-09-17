@@ -2,33 +2,40 @@
   <head>
     <title>TextAlive App API | basic example</title>
     <link rel="stylesheet" href="index.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
   </head>
   <body>
+    <div id="overlay"><button class="play" disabled>再生</button></div>
     <div id="container">
       <div>
         <p id="lyrics">
-          <span id="char">-</span>
+          <span id="char"></span>
         </p>
-        <ul>
-          <li>発声中の歌詞テキストがあれば上に表示されます</li>
-          <li>TextAlive ホストの有無により再生コントロールの表示状態が切り替わります</li>
-        </ul>
       </div>
     </div>
     <div id="media"></div>
-    <div id="meta">
-      <div id="artist">
-        <strong>artist:</strong> <span>-</span>
+    <div id="header">
+      <div id="meta">
+        <div id="artist"><strong>artist:</strong> <span>-</span></div>
+        <div id="song"><strong>song:</strong> <span>-</span></div>
       </div>
-      <div id="song">
-        <strong>song:</strong> <span>-</span>
-      </div>
+      <ul>
+        <li>発声中の歌詞テキストがあれば表示されます</li>
+        <li>
+          TextAlive ホストの有無により再生コントロールの表示状態が切り替わります
+        </li>
+      </ul>
     </div>
-    <div id="control" style="display: none;">
-      <button id="play">再生</button>
-      <button id="pause">一時停止</button>
-      <button id="rewind">巻き戻し</button>
-      <span id="position"><strong>-</strong> [ms]</span>
+    <div id="footer">
+      <p>
+        <span id="position"><strong>-</strong> [ms]</span>
+      </p>
+      <div id="control" style="display: none">
+        <button class="play" disabled>再生</button>
+        <button id="jump" disabled>歌詞頭出し</button>
+        <button id="pause" disabled>一時停止</button>
+        <button id="rewind" disabled>巻き戻し</button>
+      </div>
     </div>
     <script src="./index.js"></script>
   </body>
