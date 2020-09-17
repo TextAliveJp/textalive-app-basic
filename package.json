@@ -5,10 +5,9 @@
   "description": "発声中のテキストを表示したりTextAlive ホストの有無により再生コントロールの表示状態を切り替えたりするTextAlive App APIの作例",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel src/index.html --out-dir tmp",
+    "dev": "parcel src/index.html --out-dir dev",
     "build": "parcel build src/index.html --public-url ./ --out-dir docs --no-source-maps",
-    "clean": "del-cli .cache tmp docs"
+    "clean": "del-cli .cache dev docs"
   },
   "repository": {
     "type": "git",
