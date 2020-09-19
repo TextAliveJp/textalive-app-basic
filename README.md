@@ -9,6 +9,8 @@ TextAlive ホストと接続された状態をテストするには [TextAlive A
 - API チュートリアル「1. 開発の始め方」: https://developer.textalive.jp/app/
 - サンプルコードのデモページ: https://textalivejp.github.io/textalive-app-basic/
 
+**English version available in [README.en.md](./README.en.md).**
+
 ## 違う楽曲で試すには
 
 TextAlive App API で開発されたWebアプリケーションは、（特定の楽曲向けに作り込んでいない限り）URLのクエリパラメタで `ta_song_url={楽曲のURL}` を指定すると異なる楽曲で演出を試せます。
