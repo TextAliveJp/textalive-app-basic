@@ -22,8 +22,7 @@ const animateWord = function (now, unit) {
 // Instantiate a TextAlive Player instance
 const player = new Player({
   app: {
-    appAuthor: "Jun Kato",
-    appName: "Basic example",
+    token: "1HJzpsZ11CfoUPrr",
   },
   mediaElement: document.querySelector("#media"),
 });
@@ -70,7 +69,9 @@ function onAppReady(app) {
     // 歌詞頭出しボタン / Seek to the first character in lyrics text
     jumpBtn.addEventListener(
       "click",
-      () => player.video && player.requestMediaSeek(player.video.firstChar.startTime)
+      () =>
+        player.video &&
+        player.requestMediaSeek(player.video.firstChar.startTime)
     );
 
     // 一時停止ボタン / Pause music playback
@@ -85,9 +86,19 @@ function onAppReady(app) {
       () => player.video && player.requestMediaSeek(0)
     );
 
-    document.querySelector("#header a").setAttribute("href", "https://developer.textalive.jp/app/run/?ta_app_url=https%3A%2F%2Ftextalivejp.github.io%2Ftextalive-app-basic%2F&ta_song_url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DygY2qObZv24");
+    document
+      .querySelector("#header a")
+      .setAttribute(
+        "href",
+        "https://developer.textalive.jp/app/run/?ta_app_url=https%3A%2F%2Ftextalivejp.github.io%2Ftextalive-app-basic%2F&ta_song_url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DygY2qObZv24"
+      );
   } else {
-    document.querySelector("#header a").setAttribute("href", "https://textalivejp.github.io/textalive-app-basic/");
+    document
+      .querySelector("#header a")
+      .setAttribute(
+        "href",
+        "https://textalivejp.github.io/textalive-app-basic/"
+      );
   }
 
   // 楽曲URLが指定されていなければ マジカルミライ 2020テーマ曲を読み込む
