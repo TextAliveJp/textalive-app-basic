@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/TextAliveJp/textalive-app-basic#readme",
   "dependencies": {
-    "textalive-app-api": "^0.2.0"
+    "textalive-app-api": "^0.3.0"
   },
   "devDependencies": {
     "del-cli": "^4.0.1",
