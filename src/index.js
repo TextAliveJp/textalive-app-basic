@@ -101,10 +101,23 @@ function onAppReady(app) {
       );
   }
 
-  // 楽曲URLが指定されていなければ マジカルミライ 2020テーマ曲を読み込む
+  // 楽曲URLが指定されていなければ マジカルミライ 2025 課題曲を読み込む
   // Load a song when a song URL is not specified
   if (!app.songUrl) {
-    player.createFromSongUrl("http://www.youtube.com/watch?v=ygY2qObZv24");
+    // ロンリーラン / 海風太陽
+    player.createFromSongUrl("https://piapro.jp/t/CyPO/20250128183915", {
+      video: {
+        // 音楽地図訂正履歴
+        beatId: 4694280,
+        chordId: 2830735,
+        repetitiveSegmentId: 2946483,
+    
+        // 歌詞URL: https://piapro.jp/t/jn89
+        // 歌詞タイミング訂正履歴: https://textalive.jp/lyrics/piapro.jp%2Ft%2FCyPO%2F20250128183915
+        lyricId: 67815,
+        lyricDiffId: 20659
+      },
+    });
   }
 }
 
